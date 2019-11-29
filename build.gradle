@@ -10,9 +10,8 @@ targetCompatibility = 1.8
 
 ext {
     applitoolsVersion = '3.158.4'
-    webdrivermanagerVersion = '3.2.0'
-    hamcrestVersion = '2.2'
-    testNGVersion = '2.2'
+    testNGVersion = '7.0.0'
+    lombokVersion = '1.18.10'
 }
 
 repositories {
@@ -20,15 +19,15 @@ repositories {
 }
 
 dependencies {
-    testCompile "org.hamcrest:hamcrest-core', version: '${hamcrestVersion}"
-    testCompile "io.github.bonigarcia:webdrivermanager:${webdrivermanagerVersion}"
     testCompile "org.testng:testng:${testNGVersion}"
     testCompile "com.applitools:eyes-selenium-java3:${applitoolsVersion}"
+    compile "org.projectlombok:lombok:${lombokVersion}"
 }
 
 test {
     systemProperties System.properties
     dependsOn 'cleanTest'
+    useTestNG()
 }
 
 gradle.startParameter.continueOnFailure = true
