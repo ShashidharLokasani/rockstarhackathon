@@ -1,5 +1,6 @@
 package io.shashi.rockstar.screens;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -19,6 +20,8 @@ public class CompareExpensesScreen {
     @FindBy(id = "addDataset")
     private WebElement showNextYearDataButton;
 
+    private By canvas = By.id("container");
+
     /**
      * Constructor
      *
@@ -34,6 +37,13 @@ public class CompareExpensesScreen {
      */
     public void addNextYearDataToChart() {
         showNextYearDataButton.click();
+    }
+
+    /**
+     * Method to get canvas WebElement
+     */
+    public By getCanvas() {
+        return canvas;
     }
 
 }

@@ -12,6 +12,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import static io.shashi.rockstar.util.DriverUtil.webDriver;
+import static io.shashi.rockstar.util.ReusableUtil.zoomBrowser;
 import static io.shashi.rockstar.util.Statik.*;
 
 /**
@@ -106,9 +107,17 @@ public class VisualAITests {
         eyes.open(driver, "Applitools Rockstar", "Compare Expenses Chart Test");
         loginScreen.handleLogin("Applitools", "Rockstar");
         recentTransactionsScreen.compareExpenses();
-        eyes.checkWindow("Test Expenses for past two year");
+        //Zoom the browser to get full canvas
+        zoomBrowser(driver, "0.75");
+        //Check the specific Canvas Element
+        eyes.checkElement(compareExpensesScreen.getCanvas(), "Test Expenses for past two year");
+        //Reset Zoom to click on button
+        zoomBrowser(driver, "1");
         compareExpensesScreen.addNextYearDataToChart();
-        eyes.checkWindow("Test Expenses for past two year and current year");
+        //Zoom the browser to get full canvas
+        zoomBrowser(driver, "0.75");
+        //Check the specific Canvas Element
+        eyes.checkElement(compareExpensesScreen.getCanvas(), "Test Expenses for past two year and current year");
     }
 
     /**

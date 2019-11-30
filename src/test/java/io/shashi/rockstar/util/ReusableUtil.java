@@ -1,8 +1,6 @@
 package io.shashi.rockstar.util;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 
 /**
  * ReusableUtil class to for all webdriver reusable methods
@@ -83,5 +81,13 @@ public class ReusableUtil {
      */
     public static String descriptionName(WebElement element) {
         return element.findElement(By.tagName("span")).getText();
+    }
+
+    /**
+     *
+     */
+    public static void zoomBrowser(WebDriver driver, String level) {
+        JavascriptExecutor executor = (JavascriptExecutor) driver;
+        executor.executeScript("document.body.style.zoom = '"+level+"'");
     }
 }
